@@ -1,4 +1,4 @@
-import { Button, FlatList, ScrollView, View, Text, StyleSheet } from "react-native";
+import { Button, FlatList, View, Text, StyleSheet, Pressable } from "react-native";
 import ItemForm from "./ItemForm";
 import { useState } from "react";
 
@@ -6,12 +6,17 @@ const ListItems = () => {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [items, setItems] = useState([
-        { text: "banane" },
-        { text: "tomate" }
+        { text: "banane" , id: "12"},
+        { text: "tomate" , id: "13"}
     ])
 
     const handlerAddItem = () => {
         setModalVisible(true)
+    }
+
+    const deleteItem = (id) => {
+        //console.log(id);
+        setItems(items.filter( i => i.id !== id ))
     }
 
     return ( 
@@ -26,11 +31,11 @@ const ListItems = () => {
                     data={items}
                     renderItem={(itemData) => {
                         return(
-                            <View style={styles.itemContainer}>
+                            <Pressable style={styles.itemContainer} onPress={() => deleteItem(itemData.item.id)}>
                                 <Text style={styles.textItem}>
                                     {itemData.item.text}
                                 </Text>
-                            </View>
+                            </Pressable>
                         )
                     }}
                     keyExtractor={(item, index) => {
