@@ -1,6 +1,7 @@
 import { Button, FlatList, View, Text, StyleSheet, Pressable } from "react-native";
 import ItemForm from "./ItemForm";
 import { useState } from "react";
+import ButtonCustom from "./ButtonCustom";
 
 const ListItems = () => {
 
@@ -21,12 +22,19 @@ const ListItems = () => {
 
     return ( 
         <View>
-            <Button 
-                title="Ajouter un Article"
+            <ButtonCustom 
+                text={"AJOUTER UN ARTICLE"}
+                styleContainer={{
+                    borderRadius: 0,
+                    height: 50,
+                    marginTop: 0
+                }}
+                styleText={{
+                    color: "#FFFF",
+                    fontSize: 25
+                }}
                 onPress={handlerAddItem}
-                styles= {styles.textBtn}
             />
-            
             <FlatList 
                     data={items}
                     renderItem={(itemData) => {

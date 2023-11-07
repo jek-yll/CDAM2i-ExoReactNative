@@ -1,5 +1,6 @@
-import { Button, Modal, Pressable, StyleSheet, TextInput, View, Text } from "react-native";
+import { Modal, StyleSheet, TextInput, View } from "react-native";
 import { useState } from "react";
+import ButtonCustom from "./ButtonCustom";
 
 const ItemForm = ({visible, setModalVisible, setItems}) => {
 
@@ -15,10 +16,6 @@ const ItemForm = ({visible, setModalVisible, setItems}) => {
         setTextInput("")
     }
 
-    const onPressHandler = () => {
-        
-    }
-
     return ( 
         <Modal visible={visible} style={styles.container}>
             <TextInput
@@ -26,33 +23,29 @@ const ItemForm = ({visible, setModalVisible, setItems}) => {
                 value={textInput}
                 onChangeText={handlerTextInput}
             />
-            <View style={[styles.buttonContainer]}>
-                <Button 
-                    style={styles.button}
-                    title="Ajouter"
-                    onPress={handlerAddItem}
+            <View style={styles.buttonContainer}>
+                <ButtonCustom 
+                    text={"AJOUTER"}
+                    styleContainer={{
+                        backgroundColor: "#3d9ccf",
+                        width: 150
+                    }}
+                    styleText={{
+                        color: "#FFFF"
+                    }}
+                    onPress={handlerAddItem}   
                 />
-                <Button 
-                    style={styles.button}
-                    title="Annuler"
-                    color="red"
+                <ButtonCustom 
+                    text={"ANNULER"}
+                    styleContainer={{
+                        backgroundColor: "#de585b",
+                        width: 150
+                    }}
+                    styleText={{
+                        color: "#FFFF"
+                    }}
                     onPress={() => setModalVisible(false)}
                 />
-            </View>
-            <View style={styles.buttonContainer}>
-                <Pressable 
-                    style={styles.button}
-                    onPress={onPressHandler}
-                >
-                    <Text style={styles.textButton}>
-                        AJOUTER
-                    </Text>
-                </Pressable>
-                <Pressable style={[styles.button, styles.buttonCancel]}>
-                    <Text style={styles.textButton}>
-                        ANNULER  
-                    </Text>
-                </Pressable>
             </View>
         </Modal>
      );
@@ -75,22 +68,6 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-around"
-    },
-    button: {
-        flex: 1,
-        height: 30,
-        marginHorizontal: 30,
-        marginVertical: 5,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 25,
-        backgroundColor: "#3d9ccf", 
-    },
-    buttonCancel: {
-        backgroundColor: "#de585b"
-    },
-    textButton: {
-        color: "#ffff"
     }
 })
  
