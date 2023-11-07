@@ -1,12 +1,22 @@
-import { Button, Modal, StyleSheet, TextInput, View } from "react-native";
+import { Button, Modal, Pressable, StyleSheet, TextInput, View, Text } from "react-native";
 import { useState } from "react";
 
-const ItemForm = ({visible}) => {
+const ItemForm = ({visible, setModalVisible, setItems}) => {
 
     const [textInput, setTextInput] = useState("")
 
     const handlerTextInput = (newText) => {
         setTextInput(newText)
+    }
+
+    const handlerAddItem = () => {
+        setItems(prev => [...prev, {text: textInput, id: 0}])
+        setModalVisible(false)
+        setTextInput("")
+    }
+
+    const onPressHandler = () => {
+        
     }
 
     return ( 
@@ -20,12 +30,29 @@ const ItemForm = ({visible}) => {
                 <Button 
                     style={styles.button}
                     title="Ajouter"
+                    onPress={handlerAddItem}
                 />
                 <Button 
                     style={styles.button}
                     title="Annuler"
                     color="red"
+                    onPress={() => setModalVisible(false)}
                 />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Pressable 
+                    style={styles.button}
+                    onPress={onPressHandler}
+                >
+                    <Text style={styles.textButton}>
+                        AJOUTER
+                    </Text>
+                </Pressable>
+                <Pressable style={[styles.button, styles.buttonCancel]}>
+                    <Text style={styles.textButton}>
+                        ANNULER  
+                    </Text>
+                </Pressable>
             </View>
         </Modal>
      );
@@ -38,18 +65,32 @@ const styles = StyleSheet.create({
     },
     input: {
         alignSelf: "center",
-        height: 40,
-        width: 150,
+        height:50,
+        width: 200,
         margin: 20,
-        borderWidth: 1,
-        padding: 10
+        borderWidth: 0.75,
+        padding: 10,
+        borderRadius: 25
     }, 
     buttonContainer: {
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "space-around"
     },
     button: {
-        margin: 5
+        flex: 1,
+        height: 30,
+        marginHorizontal: 30,
+        marginVertical: 5,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 25,
+        backgroundColor: "#3d9ccf", 
+    },
+    buttonCancel: {
+        backgroundColor: "#de585b"
+    },
+    textButton: {
+        color: "#ffff"
     }
 })
  

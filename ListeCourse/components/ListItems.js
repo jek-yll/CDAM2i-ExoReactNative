@@ -1,4 +1,4 @@
-import { Button, FlatList, ScrollView, View, Text } from "react-native";
+import { Button, FlatList, ScrollView, View, Text, StyleSheet } from "react-native";
 import ItemForm from "./ItemForm";
 import { useState } from "react";
 
@@ -6,13 +6,12 @@ const ListItems = () => {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [items, setItems] = useState([
-        { text: "banane", id:1 },
-        { text: "tomate", id:2 }
+        { text: "banane" },
+        { text: "tomate" }
     ])
 
     const handlerAddItem = () => {
         setModalVisible(true)
-        console.log("object");
     }
 
     return ( 
@@ -20,14 +19,15 @@ const ListItems = () => {
             <Button 
                 title="Ajouter un Article"
                 onPress={handlerAddItem}
+                styles= {styles.textBtn}
             />
             
             <FlatList 
                     data={items}
                     renderItem={(itemData) => {
                         return(
-                            <View>
-                                <Text>
+                            <View style={styles.itemContainer}>
+                                <Text style={styles.textItem}>
                                     {itemData.item.text}
                                 </Text>
                             </View>
@@ -38,10 +38,27 @@ const ListItems = () => {
                     }}
                 />
 
-            <ItemForm visible={modalVisible}/>
+            <ItemForm visible={modalVisible} setModalVisible={setModalVisible} setItems={setItems}/>
 
         </View>
      );
 }
- 
+
+const styles = StyleSheet.create({
+    itemContainer: {
+        border: 1,
+        backgroundColor: "#a953ff",
+        margin: 4,
+        borderRadius: 25
+    },
+    textItem: { 
+        color: "#ffffff",
+        fontSize: 20,
+        textAlign: "center"
+    },
+    textBtn: {
+        fontSize: 40
+    }
+})
+
 export default ListItems;
