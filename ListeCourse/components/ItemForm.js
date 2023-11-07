@@ -10,7 +10,7 @@ const ItemForm = ({visible, setModalVisible, setItems}) => {
     }
 
     const handlerAddItem = () => {
-        setItems(prev => [...prev, {text: textInput, id: 0}])
+        setItems(prev => [...prev, {text: textInput}])
         setModalVisible(false)
         setTextInput("")
     }
