@@ -1,10 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Switch, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import ButtonCustom from './components/ButtonCustom'
 
 export default function App() {
     const [display, setDisplay] = useState("0")
     const [calcul, setCalcul] = useState("")
+    const [isEnabled, setIsEnabled] = useState(false);
+
+    const toggleSwitch = () => {
+        if (isEnabled) {
+            console.log("darkMode")
+        } else {
+            console.log("lightMode");
+        }
+        setIsEnabled(previousState => !previousState);
+    }
+    
+        
+
+    
 
     const handleBtnPress = (value) => {
         if (value === "="){
@@ -37,7 +51,15 @@ export default function App() {
 
     return (
         <View style={styles.container}>
+            <View style={styles.titleContainer}>
             <Text style={styles.title}>Calculatrice 3000</Text>
+            <Switch 
+                trackColor={{false: '#767577', true: '#81b0ff'}}
+                thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+            />            
+            </View>
             <View style={styles.screen}>
                 <Text style={styles.display}>
                     {display}
@@ -156,6 +178,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#000000"
+    },
+    titleContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     title: {
         fontSize: 40,
