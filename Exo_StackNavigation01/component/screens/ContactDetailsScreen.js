@@ -5,8 +5,6 @@ export default function ContactDetailsScreen({route}) {
 
     const contact = route.params.item
 
-    console.log(contact);
-
   return (
     <View style={styles.container}>
       <Text>Nom: {contact.nom}</Text>

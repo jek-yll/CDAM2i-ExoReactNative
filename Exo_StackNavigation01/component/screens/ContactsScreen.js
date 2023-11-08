@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
 import ButtonCustom from '../ButtonCustom'
 
@@ -25,6 +25,13 @@ export default function ContactsScreen({ navigation }) {
         telephone: "555-123-4567",
         email: "bob.johnson@example.com",
         adresse: "789 Oak Street, Village, Country"
+    },
+    {
+      nom: "Johnson",
+      prenom: "Bob",
+      telephone: "555-123-4567",
+      email: "bob.johnson@example.com",
+      adresse: "789 Oak Street, Village, Country"
     }
 ]
 
@@ -40,12 +47,10 @@ export default function ContactsScreen({ navigation }) {
 
             />
           )
-        }
-        
+        }   
       }
       />
-        
- 
+
     </View>
   )
 }
