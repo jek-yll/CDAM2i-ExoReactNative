@@ -1,24 +1,22 @@
 import { StyleSheet, Switch, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ButtonCustom from './components/ButtonCustom'
+import Screen from './components/Screen'
 
 export default function App() {
     const [display, setDisplay] = useState("0")
     const [calcul, setCalcul] = useState("")
     const [isEnabled, setIsEnabled] = useState(false);
+    const [mode, setMode] = useState("darkMode")
 
     const toggleSwitch = () => {
         if (isEnabled) {
-            console.log("darkMode")
+            setMode("darkMode")
         } else {
-            console.log("lightMode");
+            setMode("lightMode")
         }
         setIsEnabled(previousState => !previousState);
     }
-    
-        
-
-    
 
     const handleBtnPress = (value) => {
         if (value === "="){
@@ -60,116 +58,114 @@ export default function App() {
                 value={isEnabled}
             />            
             </View>
-            <View style={styles.screen}>
-                <Text style={styles.display}>
-                    {display}
-                </Text>
-            </View>
+            <Screen 
+                display={display}
+                mode={mode}
+            />
             <View style={styles.btnContainer}>
                 <View style={styles.btnsRow}>
                     <ButtonCustom
-                        text={"AC"}
+                        title={"AC"}
                         onPress = {() => handleBtnPress('AC')}
                     />
                     <ButtonCustom
-                        text={"^"}
+                        title={"^"}
                         onPress = {() => handleBtnPress('^')}
                     />
                     <ButtonCustom
-                        text={"%"}
+                        title={"%"}
                         onPress = {() => handleBtnPress('%')}
                     />
                     <ButtonCustom
-                        text={"/"}
+                        title={"/"}
                         onPress = {() => handleBtnPress('/')}
                     />
                 </View>
                 <View style={styles.btnsRow}>
                     <ButtonCustom
                         isCercle
-                        text={"7"}
+                        title={"7"}
                         onPress = {() => handleBtnPress('7')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"8"}
+                        title={"8"}
                         onPress = {() => handleBtnPress('8')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"9"}
+                        title={"9"}
                         onPress = {() => handleBtnPress('9')}
                     />
                     <ButtonCustom
-                        text={"X"}
+                        title={"X"}
                         onPress = {() => handleBtnPress('*')}
                     />
                 </View>
                 <View style={styles.btnsRow}>
                     <ButtonCustom
                         isCercle
-                        text={"4"}
+                        title={"4"}
                         onPress = {() => handleBtnPress('4')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"5"}
+                        title={"5"}
                         onPress = {() => handleBtnPress('5')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"6"}
+                        title={"6"}
                         onPress = {() => handleBtnPress('6')}
                     />
                     <ButtonCustom 
-                        text={"-"}
+                        title={"-"}
                         onPress = {() => handleBtnPress('-')}
                     />
                 </View>
                 <View style={styles.btnsRow}>
                     <ButtonCustom
                         isCercle
-                        text={"1"}
+                        title={"1"}
                         onPress = {() => handleBtnPress('1')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"2"}
+                        title={"2"}
                         onPress = {() => handleBtnPress('2')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"3"}
+                        title={"3"}
                         onPress = {() => handleBtnPress('3')}
                     />
                     <ButtonCustom 
-                        text={"+"}
+                        title={"+"}
                         onPress = {() => handleBtnPress('+')}
                     />
                 </View>
                 <View style={styles.btnsRow}>
                     <ButtonCustom
                         isCercle
-                        text={"."}
+                        title={"."}
                         onPress = {() => handleBtnPress('.')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"0"}
+                        title={"0"}
                         onPress = {() => handleBtnPress('0')}
                     />
                     <ButtonCustom
                         isCercle
-                        text={"Del"}
+                        title={"Del"}
                         onPress = {() => handleBtnPress('Del')}
                     />
                     <ButtonCustom 
-                        text={"="}
+                        title={"="}
                         onPress = {() => handleBtnPress('=')}
                     />
                 </View>
             </View>
-
         </View>
     )
 }
@@ -178,7 +174,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#000000"
-    },
+    },  
     titleContainer: {
         flexDirection: "row",
         justifyContent: "space-between"

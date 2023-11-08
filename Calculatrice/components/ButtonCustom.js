@@ -1,10 +1,16 @@
 import { Pressable, StyleSheet, Text } from 'react-native'
 import React from 'react'
 
-export default function ButtonCustom({ text, styleContainer, styleText, ...props}) {
+export default function ButtonCustom({ 
+    title, 
+    styleContainer, 
+    styleText, 
+    isCercle, 
+    onPress
+  }) {
   return (
-    <Pressable style={[props.isCercle ? styles.cercle : styles.carre, {...styleContainer} ]} onPress={props.onPress}>
-      <Text style={[props.isCercle ? styles.textCercle : styles.textCarre, {...styleText}]}>{text ? text : "Mon texte"}</Text>
+    <Pressable style={[isCercle ? styles.cercle : styles.carre, {...styleContainer} ]} onPress={onPress}>
+      <Text style={[isCercle ? styles.textCercle : styles.textCarre, {...styleText}]}>{title ? title : "Mon texte"}</Text>
     </Pressable>
   )
 }
