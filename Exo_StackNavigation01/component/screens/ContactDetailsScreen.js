@@ -8,14 +8,21 @@ export default function ContactDetailsScreen({route}) {
     console.log(contact);
 
   return (
-    <View>
-      <Text>{contact.nom}</Text>
-      <Text>{contact.prenom}</Text>
-      <Text>{contact.email}</Text>
-      <Text>{contact.telephone}</Text>
-      <Text>{contact.adresse}</Text>
+    <View style={styles.container}>
+      <Text>Nom: {contact.nom}</Text>
+      <Text>Prénom: {contact.prenom}</Text>
+      <Text>Email: {contact.email}</Text>
+      <Text>Tel: {contact.telephone}</Text>
+      <Text>Adresse: {contact.adresse}</Text>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+
+})

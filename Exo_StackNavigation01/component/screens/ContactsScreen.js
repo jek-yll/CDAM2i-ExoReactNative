@@ -1,5 +1,6 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ButtonCustom from '../ButtonCustom'
 
 export default function ContactsScreen({ navigation }) {
 
@@ -33,11 +34,11 @@ export default function ContactsScreen({ navigation }) {
         data={contacts}
         renderItem={({item}) => {
           return(
-            <Pressable onPress={() => navigation.navigate("ContactDetailsScreen", {item})}>
-              <Text>
-                {item.prenom}
-              </Text>
-            </Pressable>
+            <ButtonCustom 
+              onPress={() => navigation.navigate("ContactDetailsScreen", {item})} 
+              title={item.prenom}
+
+            />
           )
         }
         
