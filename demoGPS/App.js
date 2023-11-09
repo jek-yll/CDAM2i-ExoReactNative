@@ -14,7 +14,7 @@ export default function App() {
     const [latitude, setLatitude] = useState(null)
     const [longitude, setLongitude] = useState(null)
     const [getPosition, setGetPosition] = useState(true)
-    const [maVille, setMaVille] = useState("")
+    const [localisationFetch, setLocalisationFetch] = useState()
 
     useEffect(() => {
         Geolocation.requestAuthorization()
