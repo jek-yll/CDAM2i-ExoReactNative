@@ -13,6 +13,7 @@ export default function App() {
 
     const [latitude, setLatitude] = useState(null)
     const [longitude, setLongitude] = useState(null)
+    const [getPosition, setGetPosition] = useState(true)
     const [maVille, setMaVille] = useState("")
 
     useEffect(() => {
@@ -24,7 +25,11 @@ export default function App() {
             error => console.log(error),
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         )
-    }, [])
+    }, [getPosition])
+
+    const reload = () => {
+        setGetPosition(state => !state)
+    }
 
     const getMaLoc = async () => {
         try {
@@ -43,7 +48,11 @@ export default function App() {
             <Text>latitude : {latitude} </Text>
             <Text>longitude : {longitude} </Text>
             <Text>ma ville : {maVille}</Text>
-            <Button title='ma ville' onPress={() => getMaLoc()}></Button>
+            <Button 
+                title='Refresh'
+                onPress={reload}
+            />
+            <Button title='ma ville'></Button>
         </View>
     )
 }
