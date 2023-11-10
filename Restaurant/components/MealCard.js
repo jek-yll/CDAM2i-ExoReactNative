@@ -2,7 +2,6 @@ import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 
 export default function MealCard({
-    title,
     styleContainer,
     styleTitle,
     styleImage,
@@ -18,7 +17,7 @@ export default function MealCard({
                 style={[styles.image, {...styleImage}]}
             />
             <View style={styles.dataDisplay}>
-                <Text style={[styles.title, {...styleTitle}]}>{title}</Text>
+                <Text style={[styles.title, {...styleTitle}]}>{data.title}</Text>
                 <View style={styles.infosBlock}>
                     <Text>{data.duration} min</Text>
                     <Text style={{textTransform: "uppercase"}}>{data.complexity}</Text>
@@ -57,9 +56,9 @@ const styles = StyleSheet.create({
         borderWidth: 2
     },
     image: {
-        flex: 2,
-        width: "100%",
-        height: "100%",
+        
+        width: 500,
+        height: 200,
     },
     title: {
         flex: 1,

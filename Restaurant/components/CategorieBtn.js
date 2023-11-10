@@ -14,7 +14,7 @@ export default function CategorieBtn({
         <View 
             style={[ styles.container, {...styleContainer} ]}
         >
-            <Text 
+            <Text npm
                 style={[styles.title, {...styleTitle}]}
             >
                 {title ? title : "Categorie Btn"}
