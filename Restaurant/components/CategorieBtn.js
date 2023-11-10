@@ -8,10 +8,11 @@ export default function CategorieBtn({
     onPress
 }) {
   return (
-    <Pressable>
+    <Pressable
+        onPress={onPress}
+    >
         <View 
             style={[ styles.container, {...styleContainer} ]}
-            onPress={onPress}
         >
             <Text 
                 style={[styles.title, {...styleTitle}]}

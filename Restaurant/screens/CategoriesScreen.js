@@ -3,13 +3,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import CategorieBtn from '../components/CategorieBtn'
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen({ navigation }) {
     const categories = useSelector(state => state.categories.categories)
   
     //console.log(categories)
 
-    const categorieVavigate = () => {
-
+    const categorieVavigate = (screen, data) => {
+        navigation.navigate(screen, data)
     }
 
     return (
@@ -32,7 +32,7 @@ export default function CategoriesScreen() {
                     styleContainer={{
                         backgroundColor: `${itemData.item.color}`
                     }}
-                    onPress={categorieVavigate}
+                    onPress={() => categorieVavigate("Meals", {cat: itemData.item})}
                 />
             </ScrollView>
         )}

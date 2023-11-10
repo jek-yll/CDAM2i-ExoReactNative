@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function MealsScreen() {
+export default function MealsScreen({route}) {
+  
+  const cat = route.params.cat
+  
   return (
     <View>
-      <Text>MealsScreen</Text>
+      <Text>{cat.title}</Text>
+      <Text>Catégorie id : {cat.id}</Text>
     </View>
   )
 }
