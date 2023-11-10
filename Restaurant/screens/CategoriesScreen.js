@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux'
 import CategorieBtn from '../components/CategorieBtn'
 
 export default function CategoriesScreen({ navigation }) {
-    const categories = useSelector(state => state.categories.categories)
-  
+    const categories = useSelector(state => state.categories.categories)  
     //console.log(categories)
 
     const categorieVavigate = (screen, data) => {
