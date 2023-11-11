@@ -8,15 +8,9 @@ export default function CategorieBtn({
     onPress
 }) {
   return (
-    <Pressable
-        onPress={onPress}
-    >
-        <View 
-            style={[ styles.container, {...styleContainer} ]}
-        >
-            <Text npm
-                style={[styles.title, {...styleTitle}]}
-            >
+    <Pressable onPress={onPress}>
+        <View style={[ styles.container, {...styleContainer} ]}>
+            <Text style={[styles.title, {...styleTitle}]}>
                 {title ? title : "Categorie Btn"}
             </Text>
         </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Image, View, ScrollView, SectionList } from 'react-native'
+import { StyleSheet, Text, Image, View, ScrollView, SectionList, SafeAreaView } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -27,11 +27,7 @@ const MealsDetailsScreen = ({route}) => {
     <Image source={{ uri: meal.imageUrl }} style={{ width: '100%', height: 200 }} />
     <View style={styles.container}>
       <Text
-        style={{
-          paddingTop: 10,
-          fontWeight: 'bold',
-          fontSize: 24
-        }}
+        style={styles.title}
       >{meal.title}</Text>
       <View style={{
         flexDirection: 'row',
@@ -60,10 +56,12 @@ const MealsDetailsScreen = ({route}) => {
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
       />
-      <Text>Gluten-free: {meal.isGlutenFree ? 'Yes' : 'No'}</Text>
-      <Text>Vegan: {meal.isVegan ? 'Yes' : 'No'}</Text>
-      <Text>Vegetarian: {meal.isVegetarian ? 'Yes' : 'No'}</Text>
-      <Text>Lactose-free: {meal.isLactoseFree ? 'Yes' : 'No'}</Text>
+      <View style={styles.labelSection}>
+        { meal.isGlutenFree && <Text style={styles.label}>Gluten-free</Text> }
+        { meal.isVegan &&  <Text style={styles.label}> Vegan </Text> }
+        { meal.isVegetarian && <Text style={styles.label}>Vegetarian</Text> }
+        { meal.isLactoseFree && <Text style={styles.label}>Lactose-free</Text> }
+      </View>
     </View>
   </ScrollView>
   )
@@ -77,7 +75,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-
+    paddingTop: 10,
+    fontWeight: 'bold',
+    fontSize: 24,
+    textAlign: 'center',
   },
   titleSection: {
     paddingBottom: 10,
@@ -85,19 +86,31 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     textAlign: 'center',
     fontSize: 20,
-    borderBottomColor: '#E0B497',
+    borderBottomColor: '#daa786',
     borderBottomWidth: 4,
-    color: '#E0B497'
+    color: '#daa786'
 
   },
   itemsSection: { 
     textAlign: 'center',
-    backgroundColor: '#E0B497',
+    backgroundColor: '#daa786',
     borderRadius: 8,
     paddingVertical: 4,
     margin: 3,
     padding: 2,
     fontSize: 15
+  },
+  labelSection: {
+    flexDirection: 'row',
+    gap: 5,
+    marginBottom: 25,
+    marginTop: 10
+  },
+  label: {
+    backgroundColor: "#b8da7d",
+    color: '#000000',
+    padding: 8,
+    borderRadius: 20
   }
 })
 

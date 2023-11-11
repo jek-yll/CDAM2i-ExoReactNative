@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SectionList, SafeAreaView  } from 'react-native'
+import { StyleSheet, Text, View, SectionList } from 'react-native'
 import React from 'react'
 
 const ListItems = ({
