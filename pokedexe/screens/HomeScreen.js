@@ -1,17 +1,25 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonCustom from '../components/ButtonCustom'
 import PokeCard from '../components/PokeCard'
+import { useDispatch } from 'react-redux'
+import { fetchPokemons } from '../store/redux/pokemonSlice'
 
 export default function HomeScreen({ navigation }) {
   
+  const dispatch = useDispatch()
+
   const goToPokedex = () => {
     navigation.navigate("Pokedex")
   }
 
+  useEffect(()=>{
+    dispatch(fetchPokemons())
+  }, [])
+
   return (
     <View>
-      <Text>HomeScreen</Text>
+
       <View style={styles.btnContainer}>
         <ButtonCustom 
           title={"Pokedex"}
@@ -29,7 +37,7 @@ export default function HomeScreen({ navigation }) {
           }}
         />
       </View>
-      <PokeCard />
+
     </View>
   )
 }

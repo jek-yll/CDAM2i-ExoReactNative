@@ -7,6 +7,7 @@ import PokeListScreen from './screens/PokeListScreen'
 import PokeFavScreen from './screens/PokeFavScreen'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import PokeDetailsScreen from './screens/PokeDetailsScreen'
 
 const Stack = createStackNavigator()
 
@@ -20,6 +21,7 @@ export default function app() {
             <Stack.Navigator initialRouteName='Home'>
                 <Stack.Screen name='Home' component={HomeScreen}/>
                 <Stack.Screen name='Pokedex' component={PokeListScreen}/>
+                <Stack.Screen name='Details' component={PokeDetailsScreen}/>
                 <Stack.Screen name='Team' component={PokeFavScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
